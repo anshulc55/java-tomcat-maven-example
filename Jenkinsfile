@@ -14,7 +14,7 @@ pipeline
             {
 
                 /*For Mac & Linux machine */
-                sh 'mvn clean package'
+                sh '/Applications/apache-maven-3.6.0/bin/mvn clean package'
             }
 
             post
