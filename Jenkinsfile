@@ -6,7 +6,7 @@ pipeline {
             steps{
                 /*For Mac & Linux machine */
                 //sh '/Applications/apache-maven-3.6.0/bin/mvn -f /Users/Shared/Jenkins/Home/workspace/Code_pipeline_build_deploy/pom.xml clean package'
-                sh '/Applications/apache-maven-3.6.0/bin/mvn clean package'
+                sh 'mvn clean package'
             }
 
             post {
