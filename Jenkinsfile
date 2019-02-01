@@ -1,43 +1,29 @@
-pipeline 
-{
+pipeline {
     agent any
-    tools 
-    {
+    tools {
         maven 'LocalMaven'
     }
  
-    stages
-    {
-        stage ('Build Servlet Project')
-        {
-            steps
-            {
-
+    stages {
+        stage ('Build Servlet Project') {
+            steps{
                 /*For Mac & Linux machine */
-                sh '/Applications/apache-maven-3.6.0/bin/mvn -f /Users/Shared/Jenkins/Home/workspace/Code_pipeline_build_deploy/pom.xml clean package'
-                //sh '/Applications/apache-maven-3.6.0/bin/mvn clean package'
+                //sh '/Applications/apache-maven-3.6.0/bin/mvn -f /Users/Shared/Jenkins/Home/workspace/Code_pipeline_build_deploy/pom.xml clean package'
+                sh '/Applications/apache-maven-3.6.0/bin/mvn clean package'
             }
 
-            post
-            {
-                success
-                {
+            post {
+                success {
                     echo 'Now Archiving ....'
 
                     archiveArtifacts artifacts : '**/*.war'
                 }
             }
         }
-        stage ('Deploy Build in Staging Area')
-        {
-            steps
-            {
-
+        stage ('Deploy Build in Staging Area') {
+            steps {
                 build job : 'Deploy_Servlet_staging_env_pipeline'
-
             }
-        }
-        
-        
+        }   
     }
 }
