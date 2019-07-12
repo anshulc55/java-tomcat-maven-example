@@ -4,9 +4,8 @@ pipeline {
         stage ('Initialize') {
             steps {
                     
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                    
+                    echo 'Hello Mr Mayank varshney'
+                                        
             }
         }
 
