@@ -1,9 +1,12 @@
 pipeline {
     agent any
+    tools {
+        maven 'localMaven'
+    }
     stages {
         stage ('Build Servlet Project') {
             steps {
-              sh  '/usr/lib/maven/bin/mvn clean package'
+              sh  'mvn clean package'
             }
 
             post {
@@ -16,5 +19,6 @@ pipeline {
         }
 
     }
-    
+
 }
+
