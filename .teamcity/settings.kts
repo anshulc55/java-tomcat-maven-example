@@ -6,6 +6,10 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 data class buildMaven(val name: String) {
     fun makeBed() {
         println("I will make your bed.")
+        maven {
+            goals = "clean test"
+            runnerArgs = "-Dmaven.test.failure.ignore=true"
+        }
     }
 }
 
