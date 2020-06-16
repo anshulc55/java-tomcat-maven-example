@@ -19,7 +19,13 @@ object Build : BuildType({
     }
 
     steps {
-        buildMaven("clean test")
+        fun buildMaven("clean test") {
+            return maven {
+                goals = goal
+                runnerArgs = "-Dmaven.test.failure.ignore=true"
+            }
+    }
+    buildMaven()
   /*      maven {
             goals = "clean test"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
@@ -38,9 +44,3 @@ object Build : BuildType({
 
 //val soumya = buildMaven("clean test")
 
-fun buildMaven(goal: String) {
-        return maven {
-            goals = goal
-            runnerArgs = "-Dmaven.test.failure.ignore=true"
-        }
-}
