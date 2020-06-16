@@ -26,7 +26,7 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2019.2"
 
 project {
-    description = "Java Tomcat Maven Example DSL"
+
     buildType(Build)
 }
 
@@ -35,14 +35,6 @@ object Build : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-    }
-    
-    steps {
-        maven {
-            goals = "clean package"
-        }
-
-
     }
 
     triggers {
