@@ -19,13 +19,13 @@ object Build : BuildType({
     }
 
     steps {
-        fun buildMaven("clean test") {
+        fun buildMaven(goal: String) {
             return maven {
                 goals = goal
                 runnerArgs = "-Dmaven.test.failure.ignore=true"
             }
     }
-    buildMaven()
+    buildMaven("clean test")
   /*      maven {
             goals = "clean test"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
