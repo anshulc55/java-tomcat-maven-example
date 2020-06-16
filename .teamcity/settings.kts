@@ -3,11 +3,14 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
+public final class BuildSteps {
+
 fun BuildSteps.buildstep1(name: String) {
     step {
         param("name", name) // your parameter here
         println(name)
     }
+}
 }
 
 version = "2019.2"
