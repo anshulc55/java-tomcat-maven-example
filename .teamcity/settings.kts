@@ -3,9 +3,10 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
-class buildMaven(name: String) {
-    var commandname: String = name
-    //println(commandname)
+data class buildMaven(val name: String) {
+    fun makeBed() {
+        println("I will make your bed.")
+    }
 }
 
 version = "2019.2"
@@ -23,8 +24,9 @@ object Build : BuildType({
     }
 
     steps {
-        var robot1=buildMaven("Soumya")
-        println(robot1.commandname)
+        val robot1=buildMaven("Soumya prakash barik")
+        println(robot1.name)
+        robot1.makeBed()
     //buildMaven("clean test")
   /*      maven {
             goals = "clean test"
