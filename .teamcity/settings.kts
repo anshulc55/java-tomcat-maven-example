@@ -40,28 +40,16 @@ object Build : BuildType({
 object Test1 : BuildType({
     name = "Test1"
 
-    vcs {
-        root(DslContext.settingsRoot)
-    }
-
     steps {
         script {
             scriptContent = "echo Test Successful"
         }
     }
 
-    triggers {
-        vcs {
-        }
-    }
 })
 
 object CodeAnalysis : BuildType({
     name = "CodeAnalysis"
-
-    vcs {
-        root(DslContext.settingsRoot)
-    }
 
     steps {
         maven {
@@ -72,8 +60,4 @@ object CodeAnalysis : BuildType({
         }
     }
 
-    triggers {
-        vcs {
-        }
-    }
 })
