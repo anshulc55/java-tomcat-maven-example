@@ -10,20 +10,19 @@ project {
     description = "Java Tomcat Maven Example DSL"
     buildType(Build)
     buildType(Test1)
+    buildType(CodeAnalysis)
 }
 
 object Build : BuildType({
     name = "Build"
-    params {
-        param("clean_test", "clean test")
-    }
+
     vcs {
         root(DslContext.settingsRoot)
     }
 
     steps {
         maven {
-            goals = "%clean_test%"
+            goals = "clean test"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
         }
         script {
@@ -57,14 +56,17 @@ object Test1 : BuildType({
     }
 })
 
-object Test2 : BuildType({
-    name = "Test2"
+object CodeAnalysis : BuildType({
+    name = "CodeAnalysis"
 
     vcs {
         root(DslContext.settingsRoot)
     }
 
     steps {
+        maven {
+            goals = "sonar:sonar"
+        }
         script {
             scriptContent = "echo Test Successful"
         }
