@@ -9,7 +9,7 @@ version = "2019.2"
 project {
     description = "Java Tomcat Maven Example DSL"
     buildType(Build)
-    buildType(Test)
+    //buildType(Test)
 }
 
 object Build : BuildType({
@@ -54,5 +54,3 @@ object Test : BuildType({
         }
     }
 })
-
-
