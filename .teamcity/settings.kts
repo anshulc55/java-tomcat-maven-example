@@ -24,6 +24,10 @@ object Build : BuildType({
         maven {
             goals = "clean test"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
+            coverageEngine = jacoco {
+            classLocations = "'+:build/main/**/*.class'"
+            excludeClasses = ""
+            }
         }
         script {
             scriptContent = "echo Build Successful from soumya"
