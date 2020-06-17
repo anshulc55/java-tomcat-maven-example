@@ -4,7 +4,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2018_2.project
 
-version = "2019.2"
+version = "2020.1"
 
 project {
     sequence {
@@ -23,7 +23,7 @@ object Build : BuildType({
 
     steps {
         maven {
-            goals = "clean"
+            goals = "clean Test"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
         }
         script {
@@ -46,14 +46,9 @@ object Test : BuildType({
     }
 
     steps {
-        maven {
-            goals = "Test"
-            runnerArgs = "-Dmaven.test.failure.ignore=true"
-        }
         script {
             scriptContent = "echo Test Successful"
         }
-        //buildstep1("Soumya Prakash Barik")
     }
 
     triggers {
@@ -61,3 +56,5 @@ object Test : BuildType({
         }
     }
 })
+
+
