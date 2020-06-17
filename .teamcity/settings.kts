@@ -6,7 +6,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 version = "2019.2"
 
-mvncommand = "clean test"
+val mvncommand = "clean test"
 
 project {
     description = "Java Tomcat Maven Example DSL"
