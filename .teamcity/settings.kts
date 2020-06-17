@@ -20,7 +20,7 @@ object Build : BuildType({
 
     steps {
         maven {
-            goals = "clean Test"
+            goals = "clean test"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
         }
         script {
@@ -53,5 +53,3 @@ object Test : BuildType({
         }
     }
 })
-
-
