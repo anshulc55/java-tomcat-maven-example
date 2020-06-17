@@ -6,8 +6,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 version = "2019.2"
 
-val mvncommand = "clean test"
-
 project {
     description = "Java Tomcat Maven Example DSL"
     buildType(Build)
@@ -16,14 +14,16 @@ project {
 
 object Build : BuildType({
     name = "Build"
-
+    params {
+        param("clean_test", "clean test")
+    }
     vcs {
         root(DslContext.settingsRoot)
     }
 
     steps {
         maven {
-            goals = "$mvncommand"
+            goals = "%clean_test%"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
         }
         script {
