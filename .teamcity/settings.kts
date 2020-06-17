@@ -6,9 +6,14 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 version = "2019.2"
 
 project {
+    sequence {
     description = "Java Tomcat Maven Example DSL"
     buildType(Build)
-    buildType(Test)
+        parallel {
+            buildType(Test1)
+            buildType(Test2)
+        }
+    }
 }
 
 object Build : BuildType({
@@ -35,8 +40,27 @@ object Build : BuildType({
     }
 })
 
-object Test : BuildType({
-    name = "Test"
+object Test1 : BuildType({
+    name = "Test1"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            scriptContent = "echo Test Successful"
+        }
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+})
+
+object Test2 : BuildType({
+    name = "Test2"
 
     vcs {
         root(DslContext.settingsRoot)
