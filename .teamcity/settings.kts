@@ -3,14 +3,16 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.v2019_2.Project
 
 version = "2019.2"
 
 project {
+    sequence {
     description = "Java Tomcat Maven Example DSL"
     buildType(Build)
     buildType(Test1)
-    buildType(Test2)
+    }
 }
 
 object Build : BuildType({
