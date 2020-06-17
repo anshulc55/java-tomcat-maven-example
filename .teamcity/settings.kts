@@ -38,7 +38,7 @@ object Build : BuildType({
     }
 })
 
-object Build : BuildType({
+object Test : BuildType({
     name = "Test"
 
     vcs {
