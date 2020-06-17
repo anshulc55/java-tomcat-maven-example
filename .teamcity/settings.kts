@@ -23,7 +23,7 @@ object Build : BuildType({
 
     steps {
         maven {
-            goals = mvncommand
+            goals = "$mvncommand"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
         }
         script {
