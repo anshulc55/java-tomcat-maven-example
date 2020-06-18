@@ -6,6 +6,12 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 version = "2019.2"
 
+fun scriptcall(){
+    script {
+    scriptContent = "echo Test Successful"
+    }
+}
+
 project {
     description = "Java Tomcat Maven Example DSL"
     buildType(Build)
@@ -47,10 +53,10 @@ object Test1 : BuildType({
         root(DslContext.settingsRoot)
     }
     steps {
-        script {
-            scriptContent = "echo Test Successful"
-        //    scriptcall()
-        }
+        //script {
+            //scriptContent = "echo Test Successful"
+            scriptcall.script()
+        //}
     }
     triggers {
         vcs {
