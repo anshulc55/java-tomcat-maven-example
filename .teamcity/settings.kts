@@ -6,6 +6,10 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 version = "2019.2"
 
+fun scriptcall(){
+    scriptContent = "echo Test Successful"
+}
+
 project {
     description = "Java Tomcat Maven Example DSL"
     buildType(Build)
@@ -43,19 +47,28 @@ object Build : BuildType({
 
 object Test1 : BuildType({
     name = "Test1"
-
+    vcs {
+        root(DslContext.settingsRoot)
+    }
     steps {
         script {
-            scriptContent = "echo Test Successful"
+            //scriptContent = "echo Test Successful"
+            scriptcall()
         }
     }
-
+    triggers {
+        vcs {
+        }
+    }
 })
 
 object CodeAnalysis : BuildType({
     name = "CodeAnalysis"
-
+    vcs {
+        root(DslContext.settingsRoot)
+    }
     steps {
+        
         maven {
             goals = "sonar:sonar"
         }
@@ -63,5 +76,8 @@ object CodeAnalysis : BuildType({
             scriptContent = "echo Test Successful"
         }
     }
-
+    triggers {
+        vcs {
+        }
+    }
 })
